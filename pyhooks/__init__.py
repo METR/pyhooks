@@ -247,8 +247,8 @@ class Hooks(BaseModel):
         entry = self.make_trace_entry({"content": content})
         # entry = self.make_trace_entry({"content": content + 'added'})
         asyncio.create_task(trpc_server_request("mutation", "log", entry))
-        entry = self.make_trace_entry({"content": content, "attributes": attributes})
-        asyncio.create_task(trpc_server_request("mutation", "log", entry))
+        # entry = self.make_trace_entry({"content": content, "attributes": attributes})
+        # asyncio.create_task(trpc_server_request("mutation", "log", entry))
 
     def log_image(self, image_url: str, description: str | None = None):
         entry = self.make_trace_entry(
