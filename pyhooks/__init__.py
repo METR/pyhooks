@@ -241,7 +241,7 @@ class Hooks(BaseModel):
 
     def log(self, *content: Any):
         # self.log_with_attributes(self, {}, "string inside")
-        return self.log_with_attributes(self, {}, *content)
+        return self.log_with_attributes(self, {"foo": "bar"}, *content)
     
     def log_with_attributes(self, attributes: dict, *content: Any):
         entry = self.make_trace_entry({"content": content})
