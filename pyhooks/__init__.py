@@ -240,13 +240,9 @@ class Hooks(BaseModel):
     # Don't wait for log, action, observation, frameStart, or frameEnd. Instead, run them in the background
 
     def log(self, *content: Any):
-        self.log_with_attributes({}, ("string inside",))
         return self.log_with_attributes({"foo": "bar"}, content)
     
     def log_with_attributes(self, attributes: dict, content: Any):
-        entry = self.make_trace_entry({"content": content})
-        # entry = self.make_trace_entry({"content": content + 'added'})
-        asyncio.create_task(trpc_server_request("mutation", "log", entry))
         entry = self.make_trace_entry({"content": content, "attributes": attributes})
         asyncio.create_task(trpc_server_request("mutation", "log", entry))
 
