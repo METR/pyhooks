@@ -240,6 +240,7 @@ class Hooks(BaseModel):
     # Don't wait for log, action, observation, frameStart, or frameEnd. Instead, run them in the background
 
     def log(self, *content: Any):
+        self.log_with_attributes(self, {}, "string inside")
         return self.log_with_attributes(self, {}, content)
     
     def log_with_attributes(self, attributes: dict, *content: Any):
