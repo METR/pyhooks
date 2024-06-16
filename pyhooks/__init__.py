@@ -234,7 +234,7 @@ class Hooks(BaseModel):
         exit(exit_code)
 
     def make_trace_entry(self, x: dict[str, Any]) -> dict[str, Any]:
-        result = _new_base_event() | {"content": x}
+        result = _new_base_event() | {"content": x['content'], "attributes": x['attributes']}
         return result
 
     # Don't wait for log, action, observation, frameStart, or frameEnd. Instead, run them in the background
