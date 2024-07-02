@@ -583,7 +583,11 @@ class Hooks(BaseModel):
         return deduplicate_options(options)
 
     async def update_agent_command_result(
-        self, stdout_to_append: str, stderr_to_append: str, exit_status: int | None
+        self,
+        stdout_to_append: str,
+        stderr_to_append: str,
+        exit_status: int | None,
+        agent_pid: int | None,
     ):
         req = {
             "runId": env.RUN_ID,
@@ -591,6 +595,7 @@ class Hooks(BaseModel):
             "stdoutToAppend": stdout_to_append,
             "stderrToAppend": stderr_to_append,
             "exitStatus": exit_status,
+            "agentPid": agent_pid,
         }
         await trpc_server_request(
             "mutation",
