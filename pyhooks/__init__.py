@@ -1,5 +1,5 @@
 """
-A Python library that lets MP4 agents interact with MP4.
+A Python library that lets Vivaria agents interact with Vivaria.
 pyhooks also contains other code shared between METR agents.
 """
 
